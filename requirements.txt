@@ -1,0 +1,9 @@
+alpaca-py==0.7.1
+yfinance
+pyyaml
+matplotlib==3.7.1
+pandas
+numpy
+scikit-learn==1.2.2
+tensorflow==2.10.0
+tensorflow-gpu==2.10.0
