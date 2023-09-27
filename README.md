@@ -3,7 +3,7 @@
 
  Implementing [this](https://www.hindawi.com/journals/ijis/2023/9523230/) paper for applications in markets
 
-## H2 Setup
+## Setup
 
 Once cloned, run 
 
