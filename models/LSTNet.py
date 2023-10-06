@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-class LSTNet(tf.keras.layers.Layer):
+class LSTNet(tf.keras.Model):
 
     def __init__(self, num_heads = 5, key_dim = 5):
 
