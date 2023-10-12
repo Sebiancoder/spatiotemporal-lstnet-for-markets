@@ -87,3 +87,11 @@ class DataProcessor:
         mu, sigma = DataProcessor.get_zscore_params(numeric_data)
         
         return (numeric_data - mu) / sigma
+
+    def calc_log_returns(data):
+        '''
+        Calculate log returns for a multivate time series
+        R = ln(CLOSE_t / CLOSE_(t-1))
+        '''
+
+        return np.log(data / data.shift(periods=1))

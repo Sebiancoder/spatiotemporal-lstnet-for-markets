@@ -6,7 +6,7 @@ class SimpleLSTM(tf.keras.Model):
 
         super().__init__()
 
-        self.denseLayer = tf.keras.layers.Dense(16)  
+        self.denseLayer = tf.keras.layers.Dense(16, activation='sigmoid')  
 
     def build(self, inputs):
         
