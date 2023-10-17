@@ -10,8 +10,7 @@ class LSTNet(tf.keras.Model):
 
         spat_self_att = tf.keras.layers.MultiHeadAttention(num_heads=num_heads, key_dim=key_dim)    
 
-    def build():
-        pass
+    def build(inputs):
 
     def call():
         pass

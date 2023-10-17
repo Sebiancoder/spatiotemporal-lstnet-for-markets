@@ -6,16 +6,15 @@ class SimpleLSTM(tf.keras.Model):
 
         super().__init__()
 
-        self.denseLayer = tf.keras.layers.Dense(64, activation='sigmoid')
-        self.outputDense = tf.keras.layers.Dense(1, activation='sigmoid')  
+        self.outputDense = tf.keras.layers.Dense(1, activation='relu')  
 
-    def build(self, inputs):
+    def build(self, input_shape):
         
         self.lstm_layer = tf.keras.layers.LSTM(
             units=64, 
             activation="tanh", 
             recurrent_activation="sigmoid", 
-            recurrent_dropout=0.2, 
+            recurrent_dropout=0.1, 
             return_sequences=False, 
             stateful=False)
 
@@ -23,14 +22,14 @@ class SimpleLSTM(tf.keras.Model):
             units=64, 
             activation="tanh", 
             recurrent_activation="sigmoid", 
-            recurrent_dropout=0.2, 
+            recurrent_dropout=0.1, 
             return_sequences=True, 
             stateful=False)
+
+        super().build(input_shape)
 
     def call(self, inputs):
         
         x = self.lstm_layer(self.hidden_lstm(inputs))
-
-        x = self.denseLayer(x)
 
         return self.outputDense(x)
