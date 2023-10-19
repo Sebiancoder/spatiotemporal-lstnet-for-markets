@@ -11,7 +11,7 @@ class SimpleLSTM(tf.keras.Model):
     def build(self, input_shape):
         
         self.lstm_layer = tf.keras.layers.LSTM(
-            units=64, 
+            units=128, 
             activation="tanh", 
             recurrent_activation="sigmoid", 
             recurrent_dropout=0.1, 
@@ -19,7 +19,7 @@ class SimpleLSTM(tf.keras.Model):
             stateful=False)
 
         self.hidden_lstm = tf.keras.layers.LSTM(
-            units=64, 
+            units=128, 
             activation="tanh", 
             recurrent_activation="sigmoid", 
             recurrent_dropout=0.1, 
