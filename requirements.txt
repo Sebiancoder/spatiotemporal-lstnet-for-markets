@@ -8,3 +8,4 @@ scikit-learn==1.2.2
 tensorflow==2.10.0
 tensorflow-gpu==2.10.0
 keras-tcn
+keras-tuner

@@ -6,13 +6,20 @@ from tcn import TCN
 
 class LSTNet(tf.keras.Model):
 
-    def __init__(self, units=128, dropout_rate=0.1):
+    def __init__(self, units=128, dropout_rate=0.1, spat_mlp1_units=64):
 
         super().__init__()
 
         self.temp_self_att = tf.keras.layers.Attention()
 
-        self.spat_self_att = tf.keras.layers.Attention()   
+        self.spat_self_att = tf.keras.layers.Attention()
+
+        #this is the MLP captioned "autoregression" in the diagram
+        self.spat_mlp1 = tf.keras.layers.Dense(spat_mlp1_units, activation="relu")
+        self.spat_mlp2 = tf.keras.layers.Dense(spat_mlp2_units, activation="relu")
+
+        #final dense layer
+        self.final_dense = tf.keras.layers.Dense(1, activation="relu")   
 
     def build(self, input_shape):
 
@@ -25,7 +32,15 @@ class LSTNet(tf.keras.Model):
             kernel_size=2,
             dilations=np.geomspace(1, 2 ^ num_dilations, num=num_dilations, endpoint=False),
             dropout_rate=dropout_rate
-        ) 
+        )
+
+        self.lstm_layer = tf.keras.layers.LSTM(
+            units=128, 
+            activation="tanh", 
+            recurrent_activation="sigmoid", 
+            recurrent_dropout=0.1, 
+            return_sequences=False, 
+            stateful=False) 
 
         super().build(input_shape)
 
@@ -43,5 +58,14 @@ class LSTNet(tf.keras.Model):
         ssa = self.spat_self_att(spatial_embedding)
 
         convoluted_tsa = self.temporal_TCN(tsa)
+        tsa_lstm = self.lstm_layer(convoluted_tsa)
+
+        postMLP_ssa = self.spat_mlp2(self.spat_mlp1(ssa))
+
+        retransposed_spatial = tf.transpose(postMLP_ssa, perm=[0, 2, 1])
+
+        return self.final_dense(tf.concat([retransposed_spatial, tsa_lstm], axis=1))
+
+
 
 
