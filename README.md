@@ -11,4 +11,4 @@ Once cloned, run
 
 to create the conda environment and install dependencies.
 
-Then run `pip install r requirements.txt` to install all pip dependencies.
+Then run `pip install -r requirements.txt` to install all pip dependencies.
