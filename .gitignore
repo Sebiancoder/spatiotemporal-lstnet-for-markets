@@ -1,1 +1,2 @@
-/SAVED_MODELS
+/SAVED_MODELS/*
+!/SAVED_MODELS/training_log.csv
