@@ -1,2 +1,3 @@
 /SAVED_MODELS/*
 !/SAVED_MODELS/training_log.csv
+/models/_pycache_
