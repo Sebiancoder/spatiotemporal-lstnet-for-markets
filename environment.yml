@@ -6,7 +6,7 @@ channels:
   - defaults
 dependencies:
   - python==3.10.0
-  - cudatoolkit==11.2
-  - cudnn==8.1.0.77
-  - cuda-nvcc==12.2.91
+  # - cudatoolkit==11.2
+  # - cudnn==8.1.0.77
+  # - cuda-nvcc==12.2.91
   - pip=22.3.1
