@@ -1,6 +1,5 @@
 /SAVED_MODELS/*
 !/SAVED_MODELS/training_log.csv
-environment.yml
-requirements.txt
 .DS_STORE
 models/__pycache__/simple_lstm.cpython-310.pyc
+/models/_pycache_
