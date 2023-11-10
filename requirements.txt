@@ -9,3 +9,4 @@ tensorflow
 # tensorflow-gpu==2.10.0
 keras-tcn
 keras-tuner
+statsmodels
