@@ -9,6 +9,8 @@ df5 = pd.read_csv('DATA/mergeCSVs/CastorseedFuturesHistoricalData.csv')
 df6 = pd.read_csv('DATA/mergeCSVs/ADMHistoricalData.csv')
 df7 = pd.read_csv('DATA/mergeCSVs/BGHistoricalData.csv')
 df8 = pd.read_csv('DATA/mergeCSVs/DDHistoricalData.csv')
+df9 = pd.read_csv('DATA/mergeCSVs/gsgetf.csv')
+
 
 # Merge the DataFrames on the "Data" column
 # merged_df = df1.merge(df2, on='Date', how='inner')
@@ -24,7 +26,8 @@ merged_df = pd.merge(merged_df,df6[['Date','Price']],on='Date', how='left')
 merged_df = pd.merge(merged_df, df7[['Date','Price']],on='Date', how='left')
 merged_df = merged_df.rename(columns={"Price_x": "ADM", "Price_y": "BG"})
 merged_df = pd.merge(merged_df, df8[['Date','Price']],on='Date', how='left')
-merged_df = merged_df.rename(columns={"Price": "DD"})
+merged_df = pd.merge(merged_df, df9[['Date', 'Price']], on='Date', how='left')
+merged_df = merged_df.rename(columns={"Price_x": "DD", "Price_y": "GSG"})
 
 
 
