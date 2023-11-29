@@ -14,10 +14,10 @@ class SimpleLSTM(tf.keras.Model):
 
         self.hidden_lstms = []
 
-        for i in range(self.hparams.Int("num_lstsms", default=0, min_value=0, max_value=5, step=1)):
+        for i in range(self.hparams.Int("num_lstsms", default=2, min_value=0, max_value=5, step=1)):
         
             self.hidden_lstms.append(tf.keras.layers.LSTM(
-                units=self.hparams.Int("lstm_units_{I}".format(I=i), default=16, min_value=16, max_value=256, step=16), 
+                units=self.hparams.Int("lstm_units_{I}".format(I=i), default=128, min_value=16, max_value=256, step=16), 
                 activation="tanh", 
                 recurrent_activation="sigmoid", 
                 recurrent_dropout=self.hparams.Float("dropout", default=0.1, min_value=0.05, max_value=0.3, step=0.05), 
@@ -25,7 +25,7 @@ class SimpleLSTM(tf.keras.Model):
                 stateful=False))
 
         self.outputLSTM = tf.keras.layers.LSTM(
-                units=self.hparams.Int("output_lstm", default=16, min_value=16, max_value=256, step=16), 
+                units=self.hparams.Int("output_lstm", default=128, min_value=16, max_value=256, step=16), 
                 activation="tanh", 
                 recurrent_activation="sigmoid", 
                 recurrent_dropout=self.hparams.Float("dropout", default=0.1, min_value=0.05, max_value=0.3, step=0.05), 
