@@ -28,7 +28,7 @@
 
 | Model   | Nasdaq100 Performance (MAE)  | Futures Dataset Performance (MAE) |
 | :------------ |:---------------:| :-----:|
-| LSTM   | 1.836 | 823.53 |
+| LSTM   | 1.836 | 428.04 |
 | TCN  | 64.47 | Pending |
 | MLP | 66.79 | Pending |
 | ARIMA | Pending | 117.43 |
